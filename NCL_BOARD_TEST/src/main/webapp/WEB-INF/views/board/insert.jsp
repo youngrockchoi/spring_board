@@ -42,7 +42,7 @@
 						<th>내용</th>
 						<td id="contrnTd" colspan="3" height="400" valign="top">
 							<div class="contents6" id="noticeContents">
-								<textarea type="text" class="post_content-input" name="content" placeholder="내용"></textarea>
+								<textarea name="content" placeholder="내용" rows="30" cols="160"></textarea>
 							</div>
 						</td>
 					</tr>

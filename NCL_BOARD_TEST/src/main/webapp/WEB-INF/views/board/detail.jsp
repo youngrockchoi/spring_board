@@ -60,11 +60,10 @@
 				</table>
 				<form action="/delBoard" method="post">
 					<div class="enroll">
-						<input type="button" value="목록" onclick="location.href='/list'"
-							style="cursor: pointer"> 
-							<input type="button" value="수정" style="cursor: pointer"> 
-							<input type="hidden" name="idx" value="${boardDetailVO.getIdx()}"> 
-							<input type="submit" value="삭제" style="cursor: pointer">
+						<input type="button" value="목록" onclick="location.href='/list'" style="cursor:pointer">
+						<input type="button" value="수정" onclick="location.href='/update/${boardDetailVO.getIdx()}'" style="cursor: pointer">
+						<input type="hidden" name="idx" value="${boardDetailVO.getIdx()}"> 
+						<input type="submit" value="삭제" style="cursor: pointer">
 					</div>
 				</form>
 			</div>
