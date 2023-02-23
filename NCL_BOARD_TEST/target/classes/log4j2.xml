@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration name="NCL_comm">
+	<Properties>
+        <Property name="patterns">[%d{yyyy-MM-dd HH:mm:ss.SSS}][%-5p][%t][%logger] %msg%n</Property>
+        <!-- 'env:'는 리눅스 환경 변수 호출 방법 / 'sys:'는 윈도우 환경 변수 호출 방법 -->
+        <!-- ${aaa:-bbb} 는 aaa가 없다면 bbb 라는 의미 -->
+        <Property name="TOMCAT_HOME" value="${env:CATALINA_BASE:-$${sys:catalina.home}}"/>
+    </Properties>
+	<Appenders>
+		<!-- 콘솔 -->
+		<Console name="console">
+			<PatternLayout pattern="${patterns}"/>
+		</Console>
+		
+		<!-- catalina.out_date.1 >> 쿼리 포함 debug 로그 출력 용량 100mb 기준 분할 10개 유지 -->
+		<RollingFile name="catalinaOut" fileName="${TOMCAT_HOME}/logs/catalinaOut.${date:yyyy-MM-dd}" 
+		filePattern="${TOMCAT_HOME}/logs/catalinaOut.%d{yyyy-MM-dd}.%i" append="true">
+			<PatternLayout pattern="${patterns}"/>
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+				<SizeBasedTriggeringPolicy size="100 mb" />
+            </Policies>
+            <DefaultRolloverStrategy max="10" fileIndex="max"/>
+		</RollingFile>
+		
+		<!-- catalina.stdout.1 >> info 포함 욜야 10mb 기준 분할 5개 유지 -->
+		<RollingFile name="catalinaStdout" fileName="${TOMCAT_HOME}/logs/catalinaStdout.${date:yyyy-MM-dd}" 
+		filePattern="${TOMCAT_HOME}/logs/catalinaStdout.${date:yyyy-MM-dd}.%i" append="true">
+			<PatternLayout pattern="${patterns}"/>
+			<Filters>
+	            <ThresholdFilter level="WARN" onMatch="DENY" onMismatch="ACCEPT" />
+	            <ThresholdFilter level="FATAL" onMatch="DENY" onMismatch="ACCEPT" />
+	            <ThresholdFilter level="ERROR " onMatch="DENY" onMismatch="ACCEPT" />
+            </Filters>
+			<Policies>
+				<SizeBasedTriggeringPolicy size="10 mb" />
+            </Policies>
+            <DefaultRolloverStrategy max="5" fileIndex="max"/>
+		</RollingFile>
+		
+		<!-- catalina.error.1 >> error 포함 10mb 기준 분할 5개 유지 -->
+		<RollingFile name="catalinaError" fileName="${TOMCAT_HOME}/logs/catalinaError.${date:yyyy-MM-dd}" 
+		filePattern="${TOMECAT_HOME}/logs/catalinaError.${date:yyyy-MM-dd}.%i" append="true">
+			<PatternLayout pattern="${patterns}"/>
+			<Policies>
+				<SizeBasedTriggeringPolicy size="10 mb" />
+            </Policies>
+            <DefaultRolloverStrategy max="5" fileIndex="max"/>
+		</RollingFile>
+		
+	</Appenders>
+	<Loggers>
+		<!-- 프로젝트 내 logger 바로 노출됨 -->
+		<Root level="debug" >
+			<AppenderRef ref="console"/>
+			<AppenderRef ref="catalinaOut" level="debug"/>
+			<AppenderRef ref="catalinaStdout" level="info"/>
+			<AppenderRef ref="catalinaError" level="error"/>
+		</Root>
+
+		<!-- 프로젝트 최상위 패키지 명 -->
+		<logger name="kr.nclcorp.comm" level="debug"/>
+		
+		<logger name="kr.nclcorp.comm.interceptor" level="info"/>
+		
+		<!-- 너무 많은 로그 노출하는 3가지 제한 -->
+		<logger name="log4jdbc.log4j2" level="error"/>
+		<logger name="log4jdbc.debug" level="error" />
+		<logger name="org" level="error" />
+
+		<logger name="jdbc.sqlonly" level="info" /> 
+		<logger name="jdbc.sqltiming" level="off" /> 
+		<logger name="jdbc.audit" level="off" /> 
+		<logger name="jdbc.resultset" level="off" /> 
+		<logger name="jdbc.resultsettable" level="off" /> 
+		<logger name="jdbc.connection" level="off" />
+		
+		<logger name="java.sql.Connection" level="off" />
+
+	</Loggers>
+</Configuration> 

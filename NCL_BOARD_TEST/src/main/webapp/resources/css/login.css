@@ -1,0 +1,181 @@
+@charset "UTF-8";
+*{
+    font-family: 'Noto Sans KR', sans-serif;
+    list-style: none;
+    text-decoration: none;
+    border-collapse: collapse;
+    margin: 0px;
+    padding: 0px;
+    color: black;
+}
+
+/*font-family: 'NanumSquareLight';
+font-family: 'NanumSquare';
+font-family: 'NanumSquareBold';
+font-family: 'NanumSquareExtraBold';
+font-family: 'NanumSquareAcb';
+font-family: 'NanumSquareAceb';
+font-family: 'NanumSquareAcl';
+font-family: 'NanumSquareAcr';*/
+
+h1{
+    font-size: 50px;
+}
+
+.contents1{
+    font-size: 30px;
+    font-family: 'NanumSquareExtraBold';
+}
+
+.contents2{
+    font-size: 18px;
+    font-family: 'NanumSquareExtraBold';
+}
+
+.contents3{
+    font-size: 15px;
+    font-family: 'NanumSquareExtraBold';
+}
+
+.contents4{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.contents5{
+    font-size: 15px;
+    font-family: 'NanumSquareBold';
+}
+
+
+
+
+/*top*/
+
+.bg{
+    width: 100%;
+    height: 1080px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url(/Users/eunsunsong/Desktop/HTML/230112_NCL/IMG/bg_.png);
+    display: flex;
+}
+
+
+.log{
+    width: 1000px;
+    height: 600px;
+    background-color: #fff;
+    margin: auto;
+    margin-top: 240px;
+    display: flex;
+}
+
+.left{
+    background-color: #00559D;
+    width: 500px;
+    height: 600px;
+}
+.logo{
+    margin-top: 85px;
+    margin-left: 190px;
+    height: 30px;
+}
+.img{
+    margin-left: 15px;
+    margin-top: 85px;
+    width: 475px;
+}
+
+.right{
+    background-color: #fff;
+    width: 500px;
+    height: 600px;
+    border-radius: 20px 0px 0px 20px;
+}
+
+.text{
+    border-radius: 20px 0px 0px 20px;
+    width: 350px;
+    height: 400px;
+    padding: 100px 75px;
+}
+
+.text> h1{
+    color: #00559D;
+}
+
+.l1{
+    padding-right: 130.6px;
+}
+.l1>h4{
+    color: #00559D;
+}
+
+.keep{
+    width: 100px;
+}
+.keeptop{
+    margin-top: 35px;
+    display: flex;
+}
+
+.keep>label{
+    color: #7E7E7E;
+}
+.ID{
+    width: 350px;
+}
+.ID>input{
+    margin-top: 15px;
+    width: 350px;
+    height: 40px;
+}
+.button{
+    width: 350px;
+    display: flex;
+}
+.in{
+    width: 170px;
+    height: 50px;
+    background-color: #00559D;
+    border-radius: 10px;
+    padding: auto;
+    text-align: center;
+    margin-top: 30px;
+    cursor: pointer;
+}
+.in>h1{
+    color: #fff;
+    margin-top: 15px;
+}
+.out{
+    width: 170px;
+    height: 50px;
+    background-color: #00559D;
+    border-radius: 10px;
+    padding: auto;
+    text-align: center;
+    margin-top: 30px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.out>h1{
+    color: #fff;
+    margin-top: 15px;
+}
+
+.login{
+    width: 350px;
+    height: 50px;
+    background-color: #00559D;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+.login>h1{
+    color: #fff;
+    padding-top: 15px;
+}
