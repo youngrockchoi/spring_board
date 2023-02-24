@@ -30,10 +30,13 @@
 			<div class="title">
 				<h1>게시판 목록</h1>
 				<div class="search_area">
-					<form>
-						<input type="search" placeholder="Search"> <span>검색</span>
-					</form>
-				</div>
+						<form action="/list" method="get">
+							<select name="searchCondition" id="condition">
+								<option value="title">제목</option>
+							</select> <input type="search" name="searchKeyword" id="keyword" placeholder="Search">
+							<button type="submit">검색</button>
+						</form>
+					</div>
 			</div>
 			<table class="b_2">
 				<colgroup>
@@ -53,25 +56,25 @@
 					</tr>
 				</thead>
 				<tbody>
-					<!-- 컨트롤러로부터 현재 페이지 인덱스를 받아와서 해당 페이지에 있는 게시글들만 보여지도록  -->
 					<c:forEach var="board" items="${boardListVO }">
 						<tr>
 							<td>${board.getIdx() }</td>
 							<td><a href="/detail/${board.getIdx() }">${board.getTitle() }</a></td>
 							<td>${board.getWriter() }</td>
 							<td>${board.getRegDate().substring(0, 10)}</td>
-							 <td style="padding: 8px;"><input type="checkbox">
-                                <label for="keep" class="contents3"></label></td>
+							<td style="padding: 8px;"><input type="checkbox"> <label
+								for="keep" class="contents3"></label></td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
-			
+
 			<div class="number">
 				<a class="contents6">1</a>
 
 				<div class="enroll">
-					<input type="button" value="등록" onclick="location.href='/insert'" style="cursor:pointer">
+					<input type="button" value="등록" onclick="location.href='/insert'"
+						style="cursor: pointer">
 				</div>
 			</div>
 		</div>

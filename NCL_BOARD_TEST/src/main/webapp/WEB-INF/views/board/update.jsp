@@ -52,7 +52,7 @@
 					<div class="enroll">
 						<input type="hidden" name="idx" value="${boardDetailVO.getIdx()}"> 
 						<input type="submit" value="수정"> 
-						<input type="button" value="취소"  onclick="history.back()" style="cursor: pointer">
+						<input type="button" value="취소" onclick="history.back()" style="cursor: pointer">
 					</div>
 				</form>
 			</div>
