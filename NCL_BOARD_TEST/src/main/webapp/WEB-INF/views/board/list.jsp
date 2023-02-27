@@ -31,12 +31,12 @@
 				<h1>게시판 목록</h1>
 				<div class="search_area">
 					<form action="/list" method="get">
-						<select name="searchCondition" id="condition">
+						<select name="searchCondition" id="searchCondition">
 							<option value="title">제목</option>
 							<option value="writer">작성자</option>
-						</select>
-							<input type="search" name="searchKeyword" id="keyword" placeholder="Search">
-							<button type="submit">검색</button>
+						</select> 
+						<input type="search" name="searchKeyword" id="keyword" placeholder="Search">
+						<button type="submit">검색</button>
 					</form>
 				</div>
 			</div>
@@ -72,11 +72,32 @@
 			</table>
 
 			<div class="number">
-				<a class="contents6">1</a>
-
+				<ul class="pagination">
+					<li><a onclick="location.href='/list?pageIndex=${paginationVO.getStartPage()}'">First</a></li>
+					<li><a id="previous" href="/list?pageIndex=${paginationVO.getPrevPage() }">Previous</a></li>
+					
+					<c:if test="${paginationVO.getCurPage() == paginationVO.getStartPage()}">
+						<script>
+							document.getElementById('previous').setAttribute('href', '');
+						</script>
+					</c:if>
+					
+					<c:forEach var="num" begin="${paginationVO.getStartPage()}" end="${paginationVO.getEndPage()}">
+						<li><a onclick="location.href='/list?pageIndex=${num}'">${num}</a></li>
+					</c:forEach>
+					
+					<c:if test="${paginationVO.getCurPage() == paginationVO.getEndPage()}">
+						<script>
+							document.getElementById('next').setAttribute('href', '');
+						</script>
+					</c:if>
+				
+					<li><a id="next" href="/list?pageIndex=${paginationVO.getNextPage()}">Next</a></li>
+					<li><a onclick="location.href='/list?pageIndex=${paginationVO.getEndPage()}'">Last</a></li>
+				</ul>
+				
 				<div class="enroll">
-					<input type="button" value="등록" onclick="location.href='/insert'"
-						style="cursor: pointer">
+					<input type="button" value="등록" onclick="location.href='/insert'" style="cursor: pointer">
 				</div>
 			</div>
 		</div>
