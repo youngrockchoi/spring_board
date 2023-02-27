@@ -30,13 +30,15 @@
 			<div class="title">
 				<h1>게시판 목록</h1>
 				<div class="search_area">
-						<form action="/list" method="get">
-							<select name="searchCondition" id="condition">
-								<option value="title">제목</option>
-							</select> <input type="search" name="searchKeyword" id="keyword" placeholder="Search">
+					<form action="/list" method="get">
+						<select name="searchCondition" id="condition">
+							<option value="title">제목</option>
+							<option value="writer">작성자</option>
+						</select>
+							<input type="search" name="searchKeyword" id="keyword" placeholder="Search">
 							<button type="submit">검색</button>
-						</form>
-					</div>
+					</form>
+				</div>
 			</div>
 			<table class="b_2">
 				<colgroup>
